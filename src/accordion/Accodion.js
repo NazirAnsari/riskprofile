@@ -3,6 +3,7 @@ import { RiskData } from "./api";
 import MyAccodian from "./MyAccodian";
 import { useNavigate } from "react-router-dom";
 import "./accodion.css";
+import axios from "axios";
 
 export default function Accodion() {
   /* eslint-disable */
@@ -10,7 +11,7 @@ export default function Accodion() {
 
   const [datavalue, setdata] = useState(new Set());
   const [value, setvalue] = useState(false);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(true);
   const [obj, setobj] = useState({ });
 
   const set = (i, val) => {
@@ -29,14 +30,19 @@ export default function Accodion() {
 
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
+  const handleSubmit=async(event) =>{
     event.preventDefault();
 
+    await axios.post("http://localhost:3001/api",{obj}).then((response)=>{
+      console.log(response.data);
+    });
     navigate("/ThankYouPage");
-  }
+  };
 
+  
   return (
     <>
+    
       <section className={`sec ${value && "cont"}`}>
         <h4>Please complete the risk profile given below</h4>
         <MyAccodian data={RiskData} set={set} />
