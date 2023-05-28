@@ -1,0 +1,25 @@
+.chart {
+    width: 200px;
+    height: 200px;
+  }
+  
+  path {
+    stroke: #fff;
+    stroke-width: 2px;
+  }
+  
+  text {
+    font-size: 12px;
+    fill: #333;
+    text-anchor: middle;
+  }
+  
+  label {
+    font-size: 16px;
+    font-weight: bold;
+    fill: #333;
+    text-anchor: middle;
+    
+    pointer-events: none;
+  }
+  
